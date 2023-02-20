@@ -2,12 +2,12 @@ package com.inti.entities;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
 
 @Entity
 public class Garage extends Offre implements Serializable {
 	// Attributs
-	private String fermetureGarage;
+	private String verrouillageGarage;
 	// Relation entre calsses
 
 	// Constructeurs
@@ -15,24 +15,24 @@ public class Garage extends Offre implements Serializable {
 		super();
 	}
 
-	public Garage(String fermetureGarage) {
+	public Garage(String verrouillageGarage) {
 		super();
-		this.fermetureGarage = fermetureGarage;
+		this.verrouillageGarage = verrouillageGarage;
 	}
 	// Getters & Setters
 
-	public String getFermetureGarage() {
-		return fermetureGarage;
+	public String getVerrouillageGarage() {
+		return verrouillageGarage;
 	}
 
-	public void setFermetureGarage(String fermetureGarage) {
-		this.fermetureGarage = fermetureGarage;
+	public void setVerrouillageGarage(String verrouillageGarage) {
+		this.verrouillageGarage = verrouillageGarage;
 	}
 	// Methode toString
 
 	@Override
 	public String toString() {
-		return super.toString() + "Garage [fermetureGarage=" + fermetureGarage + "]";
+		return super.toString() + "Garage [verrouillageGarage=" + verrouillageGarage + "]";
 	}
 
 }

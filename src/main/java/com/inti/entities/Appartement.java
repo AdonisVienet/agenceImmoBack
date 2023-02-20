@@ -3,18 +3,19 @@ package com.inti.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Appartement extends Offre implements Serializable {
 	// Attributs
 	private int etageAppartement;
 	private int nbrPieceAppartement;
+	private boolean exterieurAppartement;
 	// Relation entre calsses
 
 	// Constructeurs
@@ -22,10 +23,11 @@ public class Appartement extends Offre implements Serializable {
 		super();
 	}
 
-	public Appartement(int etageAppartement, int nbrPieceAppartement) {
+	public Appartement(int etageAppartement, int nbrPieceAppartement, boolean exterieurAppartement) {
 		super();
 		this.etageAppartement = etageAppartement;
 		this.nbrPieceAppartement = nbrPieceAppartement;
+		this.exterieurAppartement = exterieurAppartement;
 	}
 	// Getters & Setters
 
@@ -44,12 +46,21 @@ public class Appartement extends Offre implements Serializable {
 	public void setNbrPieceAppartement(int nbrPieceAppartement) {
 		this.nbrPieceAppartement = nbrPieceAppartement;
 	}
-	// Methode toString
 
+	public boolean isExterieurAppartement() {
+		return exterieurAppartement;
+	}
+
+	public void setExterieurAppartement(boolean exterieurAppartement) {
+		this.exterieurAppartement = exterieurAppartement;
+	}
+
+	// Methode toString
+	
 	@Override
 	public String toString() {
-		return super.toString() + "Appartement [etageAppartement=" + etageAppartement + ", nbrPieceAppartement="
-				+ nbrPieceAppartement + "]";
+		return super.toString() +  "Appartement [etageAppartement=" + etageAppartement + ", nbrPieceAppartement=" + nbrPieceAppartement
+				+ ", exterieurAppartement=" + exterieurAppartement + "]";
 	}
 
 }
