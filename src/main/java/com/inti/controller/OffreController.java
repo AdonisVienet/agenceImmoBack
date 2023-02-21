@@ -36,13 +36,14 @@ public class OffreController {
 	}
 	
 	@PostMapping("/offres")
-	public String saveOffre(@RequestParam("adresseFront") String adresse, @RequestParam("prixFront") float prix, @RequestParam("surfaceFront") float surface,
+	public String saveOffre(@RequestParam("adresseFront") String adresse, @RequestParam("villeFront") String ville, @RequestParam("prixFront") float prix, @RequestParam("surfaceFront") float surface,
 			@RequestParam("descriptionFront") String description, @RequestParam("imageFront") MultipartFile image, @RequestParam("disponibiliteFront") boolean disponibilite,
-			@RequestParam("orientationFront") String orientation, @RequestParam("etatFront") EtatOffre etatOffre)
+			@RequestParam("orientationFront") String orientation, @RequestParam("etatFront") EtatOffre etatOffre, @RequestParam("typeOffreFront") String typeOffre)
 		{
 		try {
 			Offre currentUser = new Offre();
 			currentUser.setAdresseOffre(adresse);
+			currentUser.setVille(ville);
 			currentUser.setPrixOffre(prix);
 			currentUser.setSurfaceOffre(surface);
 			currentUser.setDescription(description);
@@ -50,6 +51,7 @@ public class OffreController {
 			currentUser.setDisponibiliteOffre(disponibilite);
 			currentUser.setOrientationOffre(orientation);
 			currentUser.setEtatOffre(etatOffre);
+			currentUser.setTypeOffre(typeOffre);
 			offreService.save(currentUser);
 			return "File Uploaded successfully";
 		} catch (Exception ex) {
@@ -68,6 +70,7 @@ public class OffreController {
 		Offre currentUser = offreService.findOne(idOffre);
 		System.out.println(currentUser.toString());
 		currentUser.setAdresseOffre(offre.getAdresseOffre());
+		currentUser.setVille(offre.getVille());
 		currentUser.setPrixOffre(offre.getPrixOffre());
 		currentUser.setSurfaceOffre(offre.getSurfaceOffre());
 		currentUser.setDescription(offre.getDescription());
@@ -75,6 +78,7 @@ public class OffreController {
 		currentUser.setDisponibiliteOffre(offre.isDisponibiliteOffre());
 		currentUser.setOrientationOffre(offre.getOrientationOffre());
 		currentUser.setEtatOffre(offre.getEtatOffre());
+		currentUser.setTypeOffre(offre.getTypeOffre());
 		return offreService.save(currentUser);
 	}
 	

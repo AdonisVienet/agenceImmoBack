@@ -35,6 +35,7 @@ public class Offre implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idOffre;
 	private String adresseOffre;
+	private String ville;
 	private float prixOffre;
 	private float surfaceOffre;
 	private String description;
@@ -61,10 +62,11 @@ public class Offre implements Serializable {
 	public Offre() {
 	}
 
-	public Offre(String adresseOffre, float prixOffre, float surfaceOffre, String description, byte[] imageOffre,
+	public Offre(String adresseOffre, String ville, float prixOffre, float surfaceOffre, String description, byte[] imageOffre,
 			boolean disponibiliteOffre, String orientationOffre, EtatOffre etatOffre, Set<Visite> visites,
 			List<Avis> avis, String typeOffre){
 		this.adresseOffre = adresseOffre;
+		this.ville = ville;
 		this.prixOffre = prixOffre;
 		this.surfaceOffre = surfaceOffre;
 		this.description = description;
@@ -176,15 +178,27 @@ public class Offre implements Serializable {
 	public void setTypeOffre(String typeOffre) {
 		this.typeOffre = typeOffre;
 	}
+	
+	
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
 
 	@Override
 	public String toString() {
-		return "Offre [idOffre=" + idOffre + ", adresseOffre=" + adresseOffre + ", prixOffre=" + prixOffre
-				+ ", surfaceOffre=" + surfaceOffre + ", description=" + description + ", imageOffre="
+		return "Offre [idOffre=" + idOffre + ", adresseOffre=" + adresseOffre + ", ville=" + ville + ", prixOffre="
+				+ prixOffre + ", surfaceOffre=" + surfaceOffre + ", description=" + description + ", imageOffre="
 				+ Arrays.toString(imageOffre) + ", disponibiliteOffre=" + disponibiliteOffre + ", orientationOffre="
 				+ orientationOffre + ", etatOffre=" + etatOffre + ", typeOffre=" + typeOffre + ", visites=" + visites
 				+ ", avis=" + avis + "]";
-	}	
+	}
+
+
 	
 
 }
