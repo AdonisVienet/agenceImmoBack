@@ -2,9 +2,11 @@ package com.inti.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("terrain")
 public class Terrain extends Offre implements Serializable {
 	// Attributs
 	private boolean constructibilite;

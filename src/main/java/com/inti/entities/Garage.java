@@ -2,9 +2,11 @@ package com.inti.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("garage")
 public class Garage extends Offre implements Serializable {
 	// Attributs
 	private String verrouillageGarage;

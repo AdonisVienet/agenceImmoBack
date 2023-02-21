@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,6 +16,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
@@ -23,6 +27,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type", discriminatorType = DiscriminatorType.STRING)
 public class Offre implements Serializable {
 	// Attributs
 	@Id
@@ -38,7 +44,8 @@ public class Offre implements Serializable {
 	private String orientationOffre;
 	@Enumerated(EnumType.STRING)
 	private EtatOffre etatOffre;
-
+	private String typeOffre;
+	
 	// Relation entre calsses
 	// ManyToMany Offre <-> Visite
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -49,10 +56,6 @@ public class Offre implements Serializable {
 	@OneToMany(mappedBy = "offreFK")
 	@Transient
 	private List<Avis> avis = new ArrayList<>();
-	// ManyToOne Offre -> Type Offre
-	@ManyToOne
-	@JoinColumn(name = "id_type_offre")
-	private TypeOffre typeOffreFK;
 
 	// Constructeurs
 	public Offre() {
@@ -60,7 +63,7 @@ public class Offre implements Serializable {
 
 	public Offre(String adresseOffre, float prixOffre, float surfaceOffre, String description, byte[] imageOffre,
 			boolean disponibiliteOffre, String orientationOffre, EtatOffre etatOffre, Set<Visite> visites,
-			List<Avis> avis, TypeOffre typeOffreFK) {
+			List<Avis> avis, String typeOffre){
 		this.adresseOffre = adresseOffre;
 		this.prixOffre = prixOffre;
 		this.surfaceOffre = surfaceOffre;
@@ -71,7 +74,7 @@ public class Offre implements Serializable {
 		this.etatOffre = etatOffre;
 		this.visites = visites;
 		this.avis = avis;
-		this.typeOffreFK = typeOffreFK;
+		this.typeOffre = typeOffre;
 	}
 
 	// Getters & Setters
@@ -147,13 +150,6 @@ public class Offre implements Serializable {
 		this.avis = avis;
 	}
 
-	public TypeOffre getTypeOffreFK() {
-		return typeOffreFK;
-	}
-
-	public void setTypeOffreFK(TypeOffre typeOffreFK) {
-		this.typeOffreFK = typeOffreFK;
-	}
 
 	public String getOrientationOffre() {
 		return orientationOffre;
@@ -170,16 +166,25 @@ public class Offre implements Serializable {
 	public void setEtatOffre(EtatOffre etatOffre) {
 		this.etatOffre = etatOffre;
 	}
+	
+	
+
+	public String getTypeOffre() {
+		return typeOffre;
+	}
+
+	public void setTypeOffre(String typeOffre) {
+		this.typeOffre = typeOffre;
+	}
 
 	@Override
 	public String toString() {
 		return "Offre [idOffre=" + idOffre + ", adresseOffre=" + adresseOffre + ", prixOffre=" + prixOffre
 				+ ", surfaceOffre=" + surfaceOffre + ", description=" + description + ", imageOffre="
 				+ Arrays.toString(imageOffre) + ", disponibiliteOffre=" + disponibiliteOffre + ", orientationOffre="
-				+ orientationOffre + ", etatOffre=" + etatOffre + ", visites=" + visites + ", avis=" + avis
-				+ ", typeOffreFK=" + typeOffreFK + "]";
-	}
-
-	// Methode toString
+				+ orientationOffre + ", etatOffre=" + etatOffre + ", typeOffre=" + typeOffre + ", visites=" + visites
+				+ ", avis=" + avis + "]";
+	}	
+	
 
 }
