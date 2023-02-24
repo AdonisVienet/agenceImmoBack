@@ -49,12 +49,9 @@ import com.inti.service.interfaces.IUtilisateurService;
 		
 		@PostMapping("/utilisateurs") // @RequestMapping(value="utilisateurs",method=RequestMethod.POST)
 		public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) {
-			Utilisateur currUtilisateur=new Utilisateur(utilisateur.getNomUtilisateur(),
-					utilisateur.getPrenomUtilisateur(), utilisateur.getEmailUtilisateur(), utilisateur.getDateNaissanceUtilisateur(), 
-					utilisateur.getNumTelUtilisateur(), utilisateur.getUsername(), passwordEncoder.encode(utilisateur.getPassword()),
-					 utilisateur.getRoles(), utilisateur.getQuestions(), utilisateur.getAviss(), utilisateur.getOffres());
-			return utilisateurService.save(currUtilisateur);
+			return utilisateurService.save(utilisateur);
 		}
+		
 		/*@PostMapping("/utilisateurs")
 		public String saveUtilisateur(@RequestParam("nomFront") String nom, @RequestParam("prenomFront") String prenom,
 				@RequestParam("usernameFront") String username, @RequestParam("passwordFront") String password, @RequestParam("dateNaissanceFront") Date

@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -25,7 +26,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "UTILISATEURS", schema = "gestion_agence_immo")
-public class Utilisateur {
+public class Utilisateur implements Serializable{
 	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
