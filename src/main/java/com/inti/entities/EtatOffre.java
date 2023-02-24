@@ -8,5 +8,4 @@ public enum EtatOffre {
 	PASSABLE,
 	A_RENOVE,
 	NULL
-
 }
