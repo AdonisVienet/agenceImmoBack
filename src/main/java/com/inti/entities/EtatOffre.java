@@ -6,6 +6,7 @@ public enum EtatOffre {
 	BON_ETAT,
 	RENOVE,
 	PASSABLE,
-	A_RENOVE
+	A_RENOVE,
+	NULL
 
 }
