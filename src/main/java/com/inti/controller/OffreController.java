@@ -31,12 +31,28 @@ public class OffreController {
 		return offreService.findAll();
 	}
 	
-	@GetMapping("/offres/{idOffre}")
-	public Offre findOne(@PathVariable("idOffre") Long idOffre) {
-		return offreService.findOne(idOffre);
+	@GetMapping("/offres/{recherche}")
+	public List<Offre> rechercher(@RequestParam("ville") String ville, 
+		@RequestParam("type") String type, @RequestParam("prix") 
+		float prix, @RequestParam("surface") float surface, @RequestParam
+		("orientaion") String orientation){
+		return offreService.findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(ville, 
+		type, prix, surface, orientation);
 	}
 	
+	
+//	@GetMapping("/offres/{idOffre}")
+//	public Offre findOne(@PathVariable("idOffre") Long idOffre) {
+//		return offreService.findOne(idOffre);
+//	}
+	
 	@PostMapping("/offres")
+	public Offre saveOffre(@RequestBody Offre offre) {
+		return offreService.save(offre);
+	}
+	
+	
+	/*@PostMapping("/offres")
 	public String saveOffre(@RequestParam("adresseFront") String adresse, @RequestParam("villeFront") String ville, @RequestParam("prixFront") float prix, @RequestParam("surfaceFront") float surface,
 			@RequestParam("descriptionFront") String description, @RequestParam("imageFront") MultipartFile image, @RequestParam("disponibiliteFront") boolean disponibilite,
 			@RequestParam("orientationFront") String orientation, @RequestParam("etatFront") EtatOffre etatOffre, @RequestParam("typeOffreFront") String typeOffre)
@@ -59,7 +75,7 @@ public class OffreController {
 			ex.printStackTrace();
 			return "Fail, maybe you had uploaded the file before";
 		}
-	}
+	}*/
 	
 	@DeleteMapping("/offres/{idOffre}")
 	public void deleteOffre(@PathVariable("idOffre") Long idOffre) {
