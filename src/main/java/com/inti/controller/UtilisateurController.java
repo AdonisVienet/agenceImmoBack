@@ -28,13 +28,12 @@ import com.inti.service.interfaces.IUtilisateurService;
 		@Autowired
 		PasswordEncoder passwordEncoder;
 
-		@GetMapping("/utilisateurs") // @RequestMapping(value="utilisateurs", method=RequestMethod.GET)
+		@GetMapping("/utilisateurs")
 		public List<Utilisateur> findAll() {
 			return utilisateurService.findAll();
 		}
 
-		@GetMapping("/utilisateurs/{idUtilisateur}") // @RequestMapping(value="/utilisateurs/{idUtilisateur}",
-														// method=RequestMethod.GET)
+		@GetMapping("/utilisateurs/{idUtilisateur}")
 		public Utilisateur findOne(@PathVariable("idUtilisateur") Long id) {
 			return utilisateurService.findOne(id);
 		}
@@ -47,7 +46,7 @@ import com.inti.service.interfaces.IUtilisateurService;
 
 		// Modification de la méthode save pour l'adapter à l'image
 		
-		@PostMapping("/utilisateurs") // @RequestMapping(value="utilisateurs",method=RequestMethod.POST)
+		@PostMapping("/utilisateurs")
 		public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) {
 			return utilisateurService.save(utilisateur);
 		}
@@ -74,18 +73,17 @@ import com.inti.service.interfaces.IUtilisateurService;
 			}
 		}*/
 
-		@DeleteMapping("/utilisateurs/{idUtilisateur}") // @RequestMapping(value="/utilisateurs/{idUtilisateur}",
-														// method=RequestMethod.DELETE)
+		@DeleteMapping("/utilisateurs/{idUtilisateur}")
 		public void deleteUtilisateur(@PathVariable("idUtilisateur") Long id) {
 			utilisateurService.delete(id);
 		}
 
-		@PutMapping("/utilisateurs/{idUtilisateur}") // http://localhost:9090/utilisateurs/2
+		@PutMapping("/utilisateurs/{idUtilisateur}")
 		public Utilisateur updateUtilisateurWithPut(@PathVariable("idUtilisateur") Long id /* id = 2 */,
 				@RequestBody Utilisateur utilisateur) { //
-			Utilisateur currentUser = utilisateurService.findOne(id); // nom = ayari, prenom = oussama, username=ouss,
+			Utilisateur currentUser = utilisateurService.findOne(id);
 			System.out.println(currentUser.toString());
-			currentUser.setNomUtilisateur(utilisateur.getNomUtilisateur()); // currentUser.setNomUtilisateur("Jean")
+			currentUser.setNomUtilisateur(utilisateur.getNomUtilisateur());
 			currentUser.setPrenomUtilisateur(utilisateur.getPrenomUtilisateur()); // //
 			currentUser.setDateNaissanceUtilisateur(utilisateur.getDateNaissanceUtilisateur());
 			currentUser.setEmailUtilisateur(utilisateur.getEmailUtilisateur());
