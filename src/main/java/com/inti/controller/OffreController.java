@@ -11,13 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.inti.entities.EtatOffre;
 import com.inti.entities.Offre;
-import com.inti.entities.Utilisateur;
 import com.inti.service.interfaces.IOffreService;
 
 @RestController
@@ -31,13 +26,9 @@ public class OffreController {
 		return offreService.findAll();
 	}
 	
-	@GetMapping("/offres/{recherche}")
-	public List<Offre> rechercher(@RequestParam("ville") String ville, 
-		@RequestParam("type") String type, @RequestParam("prix") 
-		float prix, @RequestParam("surface") float surface, @RequestParam
-		("orientaion") String orientation){
-		return offreService.findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(ville, 
-		type, prix, surface, orientation);
+	@GetMapping("/offres/{ville}")
+	public List<Offre> rechercher(@PathVariable("ville") String ville){
+		return offreService.findByVille(ville);
 	}
 	
 	

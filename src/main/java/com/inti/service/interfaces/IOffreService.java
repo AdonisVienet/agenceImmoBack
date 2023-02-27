@@ -14,8 +14,8 @@ public interface IOffreService {
 
 	void delete(Long id);
 	
-	List<Offre> findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(String ville, String type, 
-			float prix, float surface, String orientation);
+	List<Offre> findByVille(String ville);
+
 
 //	List<Offre> findByVille(String ville);
 //

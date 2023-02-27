@@ -38,10 +38,11 @@ public class OffreService implements IOffreService{
 	}
 
 	@Override
-	public List<Offre> findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(String ville, String type, float prix, float surface,
-			String orientation) {
+	public List<Offre> findByVille(String ville) {
 		// TODO Auto-generated method stub
-		return offreRepository.findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(ville, type, prix, surface, orientation);
+		return offreRepository.findByVille(ville);
 	}
+
+
 
 }
