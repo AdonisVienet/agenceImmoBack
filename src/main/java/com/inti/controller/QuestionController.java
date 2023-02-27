@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inti.entities.Offre;
 import com.inti.entities.Question;
 import com.inti.service.interfaces.IQuestionService;
 
@@ -33,7 +34,12 @@ public class QuestionController {
 		return questionService.findOne(idQuestion);
 	}
 	
-	@PostMapping("/questions")
+	@PostMapping("/questions") 
+	public Question saveQuestion(@RequestBody Question question) {
+		return questionService.save(question);
+	}
+	
+	/*@PostMapping("/questions")
 	public String saveQuestion(@RequestParam("objetQuestionFront") String objetQuestion, @RequestParam("descriptionQuestionFront") String descriptionQuestion)
 		{
 		try {
@@ -46,7 +52,7 @@ public class QuestionController {
 			ex.printStackTrace();
 			return "Fail, maybe you had uploaded the file before";
 		}
-	}
+	}*/
 	
 	@DeleteMapping("/questions/{idQuestion}")
 	public void deleteQuestion(@PathVariable("idQuestion") Long idQuestion) {
