@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.inti.entities.EtatOffre;
 import com.inti.entities.Offre;
+import com.inti.entities.Utilisateur;
 import com.inti.service.interfaces.IOffreService;
 
 @RestController
