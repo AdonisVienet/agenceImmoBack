@@ -37,4 +37,11 @@ public class OffreService implements IOffreService{
 		offreRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Offre> findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(String ville, String type, float prix, float surface,
+			String orientation) {
+		// TODO Auto-generated method stub
+		return offreRepository.findByVilleAndTypeOffreAndPrixOffreAndSurfaceOffreAndOrientationOffre(ville, type, prix, surface, orientation);
+	}
+
 }
