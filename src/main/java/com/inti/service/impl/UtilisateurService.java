@@ -43,4 +43,29 @@ public class UtilisateurService implements IUtilisateurService{
 		return utilisateurRepository.findByUsername(username);
 	}
 
+	@Override
+	public int nombreUtilisateur() {
+		return utilisateurRepository.nombreUtilisateur();
+	}
+
+	@Override
+	public int nombreClient() {
+		return utilisateurRepository.nombreClient();
+	}
+
+	@Override
+	public int nombreGerant() {
+		return utilisateurRepository.nombreGerant();
+	}
+
+	@Override
+	public int totalPrixOffreParis() {
+		return utilisateurRepository.totalPrixOffreParis();
+	}
+
+	@Override
+	public int surfaceMoyenneOffreParis() {
+		return utilisateurRepository.surfaceMoyenneOffreParis();
+	}
+
 }
