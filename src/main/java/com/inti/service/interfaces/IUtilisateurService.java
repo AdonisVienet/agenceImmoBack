@@ -12,6 +12,21 @@ public interface IUtilisateurService {
 	Utilisateur save(Utilisateur utilisateur);
 
 	void delete(Long id);
-	
+
 	Utilisateur findByUsername(String username);
+
+	// Afficher le nombre d'utilisateurs
+	int nombreUtilisateur();
+
+	// Afficher le nombre de client
+	int nombreClient();
+
+	// Afficher le nombre de gérants
+	int nombreGerant();
+
+	// Afficher le prix total des offres à Paris
+	int totalPrixOffreParis();
+
+	// Afficher la surface moyenne des offres à Paris
+	int surfaceMoyenneOffreParis();
 }
